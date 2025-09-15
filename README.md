@@ -1,106 +1,76 @@
 <h1 align="center"><p style="display: inline-flex; align-items: center; gap: 0.25em"><img style="width: 1.5em; height: 1.5em;" src="public/icons/favicon.png">wplacer</p></h1>
 
-<p align="center"><img src="https://img.shields.io/github/package-json/v/wplacer/wplacer">
-<a href="LICENSE"><img src="https://img.shields.io/github/license/wplacer/wplacer"></a>
-<a href="https://discord.gg/wplacerbot"><img src="https://img.shields.io/badge/Support-gray?style=flat&logo=Discord&logoColor=white&logoSize=auto&labelColor=5562ea"></a>
-<a href="LEIAME.md"><img src="https://img.shields.io/badge/tradução-português_(brasil)-green"></a>
-<a href="LISEZMOI.md"><img src="https://img.shields.io/badge/traduction-français-blue"></a>
-<a href="README_zh-cn.md"><img src="https://img.shields.io/badge/翻译-简体中文-red"></a></p>
+<p align="center"><img src="https://img.shields.io/github/package-json/v/luluwaffless/wplacer">
+<a href="LICENSE"><img src="https://img.shields.io/github/license/luluwaffless/wplacer"></a>
 
-A massively updated auto-drawing bot for [wplace.live](https://wplace.live/).
+针对[wplace.live](https://wplace.live/)的自动绘图机器人。
 
-## Features ✅
+### 此仓库介绍
+- 主要是翻译主页以及其他功能的文字内容，不包括修 bug 和提供技术帮助。
+- 此 md 文件是更改原仓库中文 READM_zh-cn.md 而来，仅作此仓库的部分介绍。
+- 不保证与源仓库 100% 的更新进度，还请使用源仓库进行更新。
 
--   **Simple and easy-to-use web UI:** For managing users and templates
--   **Advanced Multi-Account System:** Run templates with multiple users simultaneously. The system intelligently prioritizes users with the most charges available to maximize efficiency.
--   **Multiple Drawing Modes:** Choose from several drawing strategies (Top to Bottom, Bottom to Top, Edges First, Color-By-Color, etc.) to optimize your approach for different templates.
--   **Automatic Upgrade Purchasing:** If enabled, the bot will automatically purchase max charge upgrades or extra charges when running out for your accounts whenever they have enough droplets.
--   **Account Status Checker:** A tool in the "Manage Users" tab allows you to quickly check if your accounts' cookies are still valid.
--   **Advanced Template Controls:** Options such as restarting, replacing a template's image, or pausing on the fly make management more flexible as well as providing you with real time updates on the template's status.
--   **Automatic Captcha (Turnstile) Token Handling:** Turnstile handling lets you babysit the bot much less
--   **Desktop Notifications:** The program will now send a desktop notification when it needs a new Turnstile token, so you don't have to constantly check the console.
+## 主要功能 ✅
 
-## Installation and Usage 💻
+- **简单易用的网页界面：** 用于管理用户和模板
+- **高级多账户系统：** 支持多个用户同时运行模板。系统会智能地优先处理可用费用最多的用户，以最大化效率。
+- **多种绘制模式：** 可从多种绘制策略（自上而下、自下而上、优先边缘、随机颜色等）中选择，以优化不同模板的绘制方式。
+- **自动升级购买：** 若启用该功能，当账户可用滴数充足时，机器人将自动为账户购买最大充能升级或额外充能。
+- **账户状态检查器：** 在“管理用户”选项卡中，您可以快速检查账户的Cookie是否仍有效。
+- **高级模板控制：** 提供重启、替换模板图片或实时暂停等选项，使管理更加灵活，并实时更新模板状态。
+- **自动验证码（Turnstile）令牌处理：** Turnstile处理功能可大幅减少您对机器人的监控需求。
+- **桌面通知：** 当程序需要新的Turnstile令牌时，将发送桌面通知，您无需频繁查看控制台。
 
-[Video Tutorial](https://www.youtube.com/watch?v=YR978U84LSY)
 
-### Requirements:
-- [Node.js and NPM](https://nodejs.org/en/download)
-- [Tampermonkey](https://www.tampermonkey.net/)
-- [git](https://git-scm.com/downloads) (optional, but recommended)
-### Installation:
-1. Download the repository using [git](https://git-scm.com/downloads) (`git clone https://github.com/luluwaffless/wplacer.git`) or download the ZIP directly from GitHub (not recommended).
-1. In the terminal, navigate to the project directory and install the dependencies with `npm i`.
-1. Install the extension on each browser window with an account you want to be used by wplacer and to automatically solve Turnstiles (CAPTCHAs) by going to the extensions page of your browser, turning on developer mode, pressing load unpacked, and then selecting the LOAD_UNPACKED folder included with wplacer.
-- If you'd like, you can change the host and port of the local server by changing the `.env` file.
-### Usage:
-1. To start the bot, run `npm start` in the terminal.
-1. Open the URL printed in the console (usually `http://127.0.0.1/`) in your browser.
-1. In each browser window with the extension installed, log into your account on wplace.live. If your account does not show up in the manager after refreshing it, you can press on the extension to manually send it to wplacer.
-1. Go to the "Add Template" page to create your drawing templates.
-   - The coordinates (`Tile X/Y`, `Pixel X/Y`) are for the top-left corner of your image. You can find these by clicking a pixel on wplace.live and inspecting the `pixel` request in the Network tab of DevTools. You can also use the [Blue Marble](https://github.com/SwingTheVine/Wplace-BlueMarble) userscript (user TamperMonkey) to see a pixel's coordinates.
-   - You can assign multiple users to a single template.
-1. Finally, go to "Manage Templates" and click "Start" on any template to begin drawing.
-   - The script will occasionally refresh one of the active bot windows on [wplace.live](https://wplace.live/). This is required to refresh the Turnstile token needed for painting.
+## 使用教程 💻
 
-# FAQ and Common Errors 🤔
-### Browser:
-- **The best supported browser is Brave, which you can get here: <https://brave.com/download/>**
-- Chrome works, but is not reccomended. (zero fingerprint protection - high ban chance)
-- Firefox is not supported.
-  
-### How to get your JWT token:
-Go to [wplace.live](<https://wplace.live>), login, click anywhere on the map, then press `Ctrl` + `Shift` + `i`, go to `Application`, find the `j` column, then copy the value inside
+[视频教程（英文）](https://www.youtube.com/watch?v=YR978U84LSY)
 
-### How to install the extension:
-Go to the manage extensions tab, enable Developer mode, then click load unpacked, select the `LOAD_UNPACKED` folder.
-After that, make sure to click on the extension in wplace.live, and configure your port if you changed it in `.env`
+### 运行依赖:
+- [Node.js 和 NPM](https://nodejs.org/en/download)
+- [Tampermonkey（油猴）](https://www.tampermonkey.net/)
+- [git](https://git-scm.com/downloads) (选用，但推荐)
 
-### How to run the bot:
-1. Simply open `start.bat`.
-2. Open a command prompt in the wplacer folder. You can type `cmd` in the address bar in the file explorer to do this. Run `npm i` in the command prompt, then after run `npm start`.
-  - If you get any errors while running `npm i`, run this: `Set-ExecutionPolicy -Scope CurrentUser Bypass` then you can run `npm i`
+### 安装:
+1. 在每个浏览器窗口中安装该扩展程序，并使用您希望由wplacer使用的账户，以自动解决验证码（CAPTCHA）问题。具体操作步骤如下：进入浏览器的扩展程序页面，启用开发者模式，点击“加载未打包扩展”，然后选择随wplacer附带的LOAD_UNPACKED文件夹。
+2. 使用 [git](https://git-scm.com/downloads) (`git clone https://github.com/luluwaffless/wplacer.git`) 克隆仓库或直接从Github上下载 ZIP 压缩包 (不推荐).
+3. 在终端中打开项目目录，并执行 `npm i` 以安装依赖。
+- 可以通过修改文件夹根目录下的`.env`文件更改本地服务器的主机和端口。
 
-### How to add proxies:
-You need to find your own proxy provider, and once you do you must follow this format: `protocol://ip:port` or `protocol://user:pass:ip:port`
-Example: `socks5://127.0.0.1:9050`
-Example: `socks5://user:admin:127.0.0.1:9050`
+### 使用方法:
+1. 在终端中运行 `npm start` 以启动后端。
+2. 打开在终端中展示的服务器地址（通常是 `http://127.0.0.1/`）
+3. 在安装了扩展程序的每个浏览器窗口中，登录您的 wplace.live 账户。如果刷新后您的账户未在管理器中显示，您可以点击扩展程序手动将其发送至 wplacer。
+4. 前往“添加模板”页面创建您的绘图模板。  
+   - 坐标（`Tile X/Y`，`Pixel X/Y`）指的是图像的左上角位置。您可以通过在 wplace.live 上点击一个像素，并在开发者工具的“网络”选项卡中检查 `pixel` 请求来找到这些坐标。您还可以使用 [Blue Marble](https://github.com/SwingTheVine/Wplace-BlueMarble) （油猴用户脚本）来查看像素的坐标。  
+   - 您可将多个用户分配到同一个模板。
+5. 最后，转到“管理模板”并点击任何模板上的“开始”按钮以开始绘制。
+   - 脚本会不时刷新 wplace.live（https://wplace.live/）上的一个活跃机器人窗口。这是为了刷新绘制所需的 Turnstile 令牌。
 
-### Why is it stuck on waiting for a token?
-You must have at least one tab open to [wplace](<https://wplace.live>). You need a macro or something else that will automatically click the turnstile checkboxes.
-
-### I keep getting error 500:
-Two things will cause this, [wplace.live](<https://wplace.live>) being down, or your token is expired.
-- To check if wplace is down, go here: <https://status.wplace.lol/>
-- If its up, re-add your token by doing the first step.
-- If NEITHER are an issue, then its probably something in the code is wrong. Open an issue or tell them in the support server and it should be fixed in future updates.
-
-### ERR_MODULE_NOT_FOUND:
-One of your modules are missing. To install them, simply use `npm i`.
-
-**We will NOT provide support for other forks of this project. Ask the respective developers.**
-
-## Notes 📝
+## 免责声明 📝
 
 > [!CAUTION]
-> This bot is not affiliated with [wplace.live](https://wplace.live/) and its use may be against the site's rules. The developers are not responsible for any punishments against your accounts. Use at your own risk.
+> 该机器人与 [wplace.live](https://wplace.live/) 无关，使用该机器人可能违反该网站的规则。开发者不对您账户可能受到的任何处罚负责。使用者需自行承担风险。
 
-### To-dos ✅
-- [x] ~~Proxy support~~
-- [x] ~~Add support for paid colors~~
-- [x] ~~Support for painting between multiple tiles~~
-- [x] ~~Easier multi-account support for one template~~
-- [x] ~~Queueing system for multi-accounts~~
+### 待办 ✅
+- [x] ~~代理支持~~
+- [x] ~~对付费颜色的支持~~
+- [x] ~~对在多个画布之间绘画的支持~~
+- [x] ~~更简便的单一模板多用户支持~~
+- [x] ~~多账户队列系统~~
+- [x] ~~Docker 支持~~
 
-### Credits 🙏
+### 致谢 🙏
 
--   [Lulu](https://github.com/luluwaffless) [(donate here to help us develop the project!)](https://ko-fi.com/luluwaffless)
--   [Jinx](https://github.com/JinxTheCatto) [(Donate here to help us develop the project :3)](https://ko-fi.com/jinxthecat)
--   [Proton](https://github.com/ProtonDev-sys) [(Donate here to help us develop the project)](https://example.com/no-link-yet-lol)
+- [luluwaffless](https://github.com/luluwaffless)
+- [Jinx](https://github.com/JinxTheCatto)
 
-And to our amazing contributors!
-<p align="center"><img src="https://contrib.rocks/image?repo=wplacer/wplacer"></p>
+以及我们出色的贡献者们！
+<p align="center"><img src="https://contrib.rocks/image?repo=luluwaffless/wplacer"></p>
 
-### License 📜
+### 许可协议 📜
 
 [GNU AGPL v3](LICENSE)
+
+
+
