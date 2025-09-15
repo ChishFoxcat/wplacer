@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>wplacer</title>
     <link rel="stylesheet" href="popup.css">
 </head>
@@ -11,13 +12,13 @@
     </div>
     <div class="content">
         <div class="settings">
-            <label for="port">Server Port:</label>
+            <label for="port">服务器端口:</label>
             <input type="number" id="port" min="1" max="65535" value="80">
-            <button id="saveSettingsBtn">Save</button>
+            <button id="saveSettingsBtn">保存</button>
         </div>
-        <p id="status">Ready. Tokens will be sent automatically.</p>
-        <button id="sendCookieBtn">Manually Add/Update User</button>
-        <button id="logoutBtn" class="destructive">Quick Logout</button>
+        <p id="status">准备好了, Tokens 准备自动发送</p>
+        <button id="sendCookieBtn">手动添加/更新用户</button>
+        <button id="logoutBtn" class="destructive">快速注销</button>
     </div>
     <script src="popup.js"></script>
 </body>

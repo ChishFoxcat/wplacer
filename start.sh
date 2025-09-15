@@ -7,7 +7,7 @@ if [[ -f "users.json" ]]; then mv "users.json" "data/users.json"; fi
 if [[ -f "templates.json" ]]; then mv "templates.json" "data/templates.json"; fi
 
 if ! [[ -d "node_modules/" || "$NEED_INSTALL" == 1 ]]; then
-  echo [setup] Installing dependencies…
+  echo [setup] 正在安装依赖项...
   if [[ -f "package-lock.json" ]]; then
     npm ci
   else
