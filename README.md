@@ -15,7 +15,7 @@
 - 若有未翻译到的请提交 issue 告知。
 
 ### 仅替换网页翻译
-1. git clone 整个项目 (package正在创建中)
+1. git clone 整个项目 (release 正在创建中)
 2. 将 `public` 文件夹替换掉源仓库的 `public`
 
 ## 主要功能 ✅
