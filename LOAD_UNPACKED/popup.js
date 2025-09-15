@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     saveBtn.addEventListener('click', () => {
         const port = parseInt(portInput.value, 10);
         if (isNaN(port) || port < 1 || port > 65535) {
-            statusEl.textContent = 'Error: Invalid port number.';
+            statusEl.textContent = 'Error: 无效的端口';
             return;
         }
 
         chrome.storage.local.set({ wplacerPort: port }, () => {
-            statusEl.textContent = `Settings saved. Server on port ${port}.`;
+            statusEl.textContent = `设置已保存。服务器端口在 ${port}.`;
             // Inform background script if port changed, so it can reconnect SSE
             if (port !== initialPort) {
                 chrome.runtime.sendMessage({ action: "settingsUpdated" });
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manually send cookie
     sendCookieBtn.addEventListener('click', () => {
-        statusEl.textContent = 'Sending cookie to server...';
+        statusEl.textContent = '正在将cookie发送到服务器...';
         chrome.runtime.sendMessage({ action: "sendCookie" }, (response) => {
             if (chrome.runtime.lastError) {
                 statusEl.textContent = `Error: ${chrome.runtime.lastError.message}`;
                 return;
             }
             if (response.success) {
-                statusEl.textContent = `Success! User: ${response.name}.`;
+                statusEl.textContent = `Success! 用户: ${response.name}.`;
             } else {
                 statusEl.textContent = `Error: ${response.error}`;
             }
@@ -49,14 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Quick logout
     logoutBtn.addEventListener('click', () => {
-        statusEl.textContent = 'Logging out...';
+        statusEl.textContent = '正在退出登录...';
         chrome.runtime.sendMessage({ action: "quickLogout" }, (response) => {
             if (chrome.runtime.lastError) {
                 statusEl.textContent = `Error: ${chrome.runtime.lastError.message}`;
                 return;
             }
             if (response.success) {
-                statusEl.textContent = 'Logout successful. Site data cleared.';
+                statusEl.textContent = '注销成功。网站数据已清除。';
             } else {
                 statusEl.textContent = `Error: ${response.error}`;
             }
