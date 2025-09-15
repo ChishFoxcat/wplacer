@@ -3,6 +3,8 @@
 <p align="center"><img src="https://img.shields.io/github/package-json/v/luluwaffless/wplacer">
 <a href="LICENSE"><img src="https://img.shields.io/github/license/luluwaffless/wplacer"></a>
 
+> 仅保留中文 README，原文请前往源仓库
+
 针对[wplace.live](https://wplace.live/)的自动绘图机器人。
 
 ### 此仓库介绍
