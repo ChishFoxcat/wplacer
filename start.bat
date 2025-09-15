@@ -15,7 +15,7 @@ if not exist "node_modules\" (
 )
 
 if %NEED_INSTALL%==1 (
-  echo [setup] Installing dependencies…
+  echo [setup] 正在安装依赖项...
   if exist "package-lock.json" (
     call npm ci
   ) else (

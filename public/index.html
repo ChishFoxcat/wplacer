@@ -15,201 +15,202 @@
     <div class="container">
         <h1><img src="icons/favicon.png" alt="wplacer logo">wplacer</h1>
 
+        <!-- 主页 -->
         <div id="main">
-            <button id="openManageUsers" class="primary-button"><img src="icons/manageUsers.svg" alt="">Manage
-                Users</button>
-            <button id="openAddTemplate" class="primary-button"><img src="icons/addTemplate.svg" alt="">Add
-                Template</button>
-            <button id="openManageTemplates" class="primary-button"><img src="icons/manageTemplates.svg" alt="">Manage
-                Templates</button>
-            <button id="openLogsViewer" class="primary-button"><img src="icons/code.svg" alt="">View Logs</button>
-            <button id="openSettings" class="primary-button"><img src="icons/settings.svg" alt="">Settings</button>
+            <button id="openManageUsers" class="primary-button"><img src="icons/manageUsers.svg" alt="">用户管理</button>
+            <button id="openAddTemplate" class="primary-button"><img src="icons/addTemplate.svg" alt="">添加图片模板</button>
+            <button id="openManageTemplates" class="primary-button"><img src="icons/manageTemplates.svg" alt="">管理图片模板</button>
+            <button id="openLogsViewer" class="primary-button"><img src="icons/code.svg" alt="">查看日志</button>
+            <button id="openSettings" class="primary-button"><img src="icons/settings.svg" alt="">设置</button>
         </div>
 
+        <!-- 日志查看器 -->
         <div id="logsViewer" style="display: none;">
-            <h2>Realtime Logs Viewer</h2>
-            <input id="logsSearchInput" class="logs-search" type="text" placeholder="Search text...">
+            <h2>实时日志查看器</h2>
+            <input id="logsSearchInput" class="logs-search" type="text" placeholder="搜索关键词...">
             <div class="logs-controls">
-                <button id="showLogsBtn" class="secondary-button">Logs</button>
-                <button id="showErrorsBtn" class="secondary-button">Errors</button>
-                <button id="clearLogsBtn" class="secondary-button">Clear</button>
-                <button id="logsExportBtn" class="secondary-button">Export</button>
+                <button id="showLogsBtn" class="secondary-button">日志</button>
+                <button id="showErrorsBtn" class="secondary-button">错误</button>
+                <button id="clearLogsBtn" class="secondary-button">清除</button>
+                <button id="logsExportBtn" class="secondary-button">导出</button>
                 <select id="logsTypeFilter" class="logs-type-filter">
-                    <option value="">All</option>
-                    <option value="error">Error</option>
-                    <option value="warn">Warning</option>
-                    <option value="success">Success</option>
-                    <option value="info">Info</option>
+                    <option value="">全部/All</option>
+                    <option value="error">错误/Error</option>
+                    <option value="warn">警告/Warning</option>
+                    <option value="success">成功/Success</option>
+                    <option value="info">一般信息/Info</option>
                 </select>
             </div>
-            <div id="logsContainer" class="logs-container"><span class="logs-placeholder">Loading logs...</span></div>
+            <div id="logsContainer" class="logs-container"><span class="logs-placeholder">加载日志中...</span></div>
             <button onclick="changeTab('main');" class="secondary-button"><img src="icons/return.svg"
-                    alt="">Return</button>
+                    alt="">返回</button>
         </div>
 
+        <!-- 添加/管理用户  -->
         <div id="manageUsers" style="display: none;">
-            <h2>Add/Manage Users</h2>
+            <h2>添加/管理用户</h2>
             <form id="userForm">
                 <label for="jcookie">JWT Cookie (j)</label>
                 <input type="password" id="jcookie" required>
                 <label for="scookie">Session Cookie (s) [optional]</label>
                 <input type="password" id="scookie">
-                <button type="submit" id="submitUser" class="primary-button"><img src="icons/addUser.svg" alt="">Add
-                    User</button>
+                <button type="submit" id="submitUser" class="primary-button"><img src="icons/addUser.svg" alt="">添加用户</button>
             </form>
 
-            <h2 class="section-title" id="manageUsersTitle">Existing Users</h2>
+            <h2 class="section-title" id="manageUsersTitle">已有用户</h2>
             <div id="chargeSummary">
-                <b>Total Charges:</b> <span id="totalCharges">?</span>/<span id="totalMaxCharges">?</span> |
-                <b>Total Droplets:</b> <span id="totalDroplets">?</span> |
+                <b>总 Charges 数: </b> <span id="totalCharges">?</span>/<span id="totalMaxCharges">?</span> |
+                <b>总 Droplets 数: </b> <span id="totalDroplets">?</span> |
                 <b>PPH:</b> <span id="totalPPH">?</span>
             </div>
-            <button id="checkUserStatus" class="primary-button"><img src="icons/check.svg" alt="">Check Account
-                Status</button>
+            <button id="checkUserStatus" class="primary-button"><img src="icons/check.svg" alt="">检查账号状态</button>
             <div id="userList"></div>
 
             <button onclick="changeTab('main');" class="secondary-button"><img src="icons/return.svg"
-                    alt="">Return</button>
+                    alt="">返回</button>
         </div>
 
+        <!-- 添加 Template 图像 -->
         <div id="addTemplate" style="display: none;">
-            <h2 id="templateFormTitle">Add Template</h2>
+            <h2 id="templateFormTitle">添加 Template 图像</h2>
             <div class="info-box">
-                <b>Tip:</b> For best results, process your image through the <a
+                <b>提示:</b> 为了获得最佳效果，请先通过 <a
                     href="https://pepoafonso.github.io/color_converter_wplace/" target="_blank"
-                    rel="noopener noreferrer">wplace color converter</a> first!
+                    rel="noopener noreferrer">wplace color converter</a> 处理您的图像!
             </div>
             <button id="convert" class="primary-button" onclick="document.getElementById('convertInput').click()"><img
-                    src="icons/convert.svg" alt="">Convert Image</button>
+                    src="icons/convert.svg" alt="">上传 Template 图像</button>
             <div id="details" style="display: none;">
-                <b>Size:</b> <span id="size"></span> | <b>Charges needed:</b> <span id="ink"></span>
+                <b>尺寸:</b> <span id="size"></span> | <b>需要的 Charges 数量:</b> <span id="ink"></span>
                 <canvas id="templateCanvas"></canvas>
                 <div class="preview-controls">
-                    <button id="previewCanvasButton" class="secondary-button">Preview Canvas</button>
-                    <label for="previewBorder">Preview Border:</label>
+                    <button id="previewCanvasButton" class="secondary-button">预览画布</button>
+                    <label for="previewBorder">预览边框:</label>
                     <input type="text" inputmode="numeric" pattern="[0-9]*" id="previewBorder" value="0">
                 </div>
                 <canvas id="previewCanvas" style="display: none;"></canvas>
             </div>
             <form id="templateForm">
                 <input type="file" style="display: none;" accept="image/png" id="convertInput">
-                <label for="templateName">Template Name</label>
+                <label for="templateName">Template 图像名字</label>
                 <input type="text" id="templateName" placeholder="Insert a catchy name here" required>
-                <label>Coordinates (Ctrl-V anywhere to paste pin coordinates or a list of 4 numbers)</label>
+                <label>坐标点 (在任何地方按 Ctrl+V 粘贴坐标点或一组4个数字)</label>
                 <div class="coordinate-grid">
                     <input type="text" inputmode="numeric" pattern="[0-9]*" id="tx" placeholder="Tile X" required>
                     <input type="text" inputmode="numeric" pattern="[0-9]*" id="ty" placeholder="Tile Y" required>
                     <input type="text" inputmode="numeric" pattern="[0-9]*" id="px" placeholder="Pixel X" required>
                     <input type="text" inputmode="numeric" pattern="[0-9]*" id="py" placeholder="Pixel Y" required>
                 </div>
-                <label for="userSelectList">Users</label>
+                <label for="userSelectList">用户</label>
                 <div id="userSelectList"></div>
                 <button type="button" id="selectAllUsers" class="secondary-button"><img src="icons/manageUsers.svg"
-                        alt="">Select All</button>
+                        alt="">全部选择用户</button>
 
                 <div class="setting-toggle">
-                    <label for="canBuyMaxCharges">Buy Max Charge Upgrades</label>
+                    <label for="canBuyMaxCharges">购买 Max Charge Upgrades</label>
                     <label class="switch">
                         <input id="canBuyMaxCharges" name="canBuyMaxCharges" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="canBuyCharges">Buy Paint Charges</label>
+                    <label for="canBuyCharges">购买 Paint Charges</label>
                     <label class="switch">
                         <input id="canBuyCharges" name="canBuyCharges" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="antiGriefMode">Enable Anti-Grief Mode</label>
+                    <label for="antiGriefMode">启用防破坏模式</label>
                     <label class="switch">
                         <input id="antiGriefMode" name="antiGriefMode" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="eraseMode">Paint Transparent Pixels</label>
+                    <label for="eraseMode">绘制透明的像素</label>
                     <label class="switch">
                         <input id="eraseMode" name="eraseMode" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="templateOutlineMode">Enable Outline Mode</label>
+                    <label for="templateOutlineMode">启用草稿模式</label>
                     <label class="switch">
                         <input id="templateOutlineMode" name="templateOutlineMode" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="templateSkipPaintedPixels">Skip Others' Painted Pixels</label>
+                    <label for="templateSkipPaintedPixels">跳过其他人的绘制像素</label>
                     <label class="switch">
                         <input id="templateSkipPaintedPixels" name="templateSkipPaintedPixels" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="setting-toggle">
-                    <label for="enableAutostart">Enable Autostart</label>
+                    <label for="enableAutostart">启用自动</label>
                     <label class="switch">
                         <input id="enableAutostart" name="enableAutostart" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
-                <h3>Reorder Colors</h3>
+                <h3>颜色排序</h3>
                 <div class="color-grid" id="colorGrid"></div>
 
-                <button class="btn-danger" onclick="resetOrder()">Reset to Default</button>
+                <button class="btn-danger" onclick="resetOrder()">重置为默认值</button>
 
                 <button type="submit" id="submitTemplate" class="primary-button"><img src="icons/addTemplate.svg"
-                        alt="">Add Template</button>
+                        alt="">添加 Template 图像</button>
             </form>
             <button onclick="changeTab('main'); resetTemplateForm();" class="secondary-button"><img
-                    src="icons/return.svg" alt="">Return</button>
+                    src="icons/return.svg" alt="">返回</button>
         </div>
 
+        <!-- 管理 Templates 图像 -->
         <div id="manageTemplates" style="display: none;">
-            <h2>Manage Templates</h2>
+            <h2>管理 Templates 图像</h2>
             <div class="template-actions-all">
-                <button id="startAll" class="primary-button"><img src="icons/playAll.svg" alt="">Start All</button>
-                <button id="stopAll" class="secondary-button"><img src="icons/pauseAll.svg" alt="">Stop All</button>
+                <button id="startAll" class="primary-button"><img src="icons/playAll.svg" alt="">全部启动</button>
+                <button id="stopAll" class="secondary-button"><img src="icons/pauseAll.svg" alt="">全部停止</button>
             </div>
             <div id="templateList"></div>
             <button onclick="changeTab('main');" class="secondary-button"><img src="icons/return.svg"
-                    alt="">Return</button>
+                    alt="">返回</button>
         </div>
 
+        <!-- 设置 -->
         <div id="settings" style="display: none;">
-            <h2>Settings</h2>
+            <h2>设置</h2>
 
             <div class="setting-toggle">
-                <label for="openBrowserOnStart">Open Browser on Startup</label>
+                <label for="openBrowserOnStart">在启动时打开浏览器</label>
                 <label class="switch">
                     <input id="openBrowserOnStart" name="openBrowserOnStart" type="checkbox">
                     <span class="slider"></span>
                 </label>
             </div>
 
-            <label for="drawingDirectionSelect">Drawing Direction</label>
+            <label for="drawingDirectionSelect">绘图方向</label>
             <select id="drawingDirectionSelect">
-                <option value="ttb">Top to Bottom</option>
-                <option value="btt">Bottom to Top</option>
-                <option value="ltr">Left to Right</option>
-                <option value="rtl">Right to Left</option>
-                <option value="center_out">Center Out</option>
-                <option value="random">Random Pixels</option>
+                <option value="ttb">从上到下</option>
+                <option value="btt">从下到上</option>
+                <option value="ltr">从左到右</option>
+                <option value="rtl">从右到左</option>
+                <option value="center_out">从中心</option>
+                <option value="random">随机</option>
             </select>
 
-            <label for="drawingOrderSelect">Drawing Order</label>
+            <label for="drawingOrderSelect">绘图顺序</label>
             <select id="drawingOrderSelect">
-                <option value="linear">Linear</option>
-                <option value="randomColor">Random Color</option>
-                <option value="color">Color by Color</option>
+                <option value="linear">直线</option>
+                <option value="randomColor">随机颜色</option>
+                <option value="color">逐色着色</option>
             </select>
 
-            <label for="pixelSkipSelect">Drawing Density</label>
+            <label for="pixelSkipSelect">绘图密度</label>
             <select id="pixelSkipSelect">
-                <option value="1">1/1 (Every Pixel)</option>
+                <option value="1">1/1 (每个像素)</option>
                 <option value="2">1/2</option>
                 <option value="4">1/4</option>
                 <option value="8">1/8</option>
@@ -219,57 +220,56 @@
                 <option value="128">1/128</option>
             </select>
 
-            <label for="accountCooldown">Account Turn Cooldown (seconds)</label>
+            <label for="accountCooldown">账号冷却 (秒)</label>
             <input type="number" id="accountCooldown" min="0" value="20">
-            <label for="purchaseCooldown">Purchase Cooldown (seconds)</label>
+            <label for="purchaseCooldown">购买 Charge 冷却 (秒)</label>
             <input type="number" id="purchaseCooldown" min="0" value="5">
-            <label for="accountCheckCooldown">Account Check Cooldown (seconds)</label>
+            <label for="accountCheckCooldown">账号检查冷却 (秒)</label>
             <input type="number" id="accountCheckCooldown" min="0" value="0">
-            <label for="dropletReserve">Minimum Droplets Before Buying</label>
+            <label for="dropletReserve">购买后 Droplets 最小值</label>
             <input type="number" id="dropletReserve" min="0" value="0">
-            <label for="antiGriefStandby">Anti-Grief Standby Time (minutes)</label>
+            <label for="antiGriefStandby">防破坏待机时间 (分)</label>
             <input type="number" id="antiGriefStandby" min="1" value="10">
-            <label for="chargeThreshold">Charge Threshold (%)</label>
+            <label for="chargeThreshold">Charge 阈值 (%)</label>
             <input type="number" id="chargeThreshold" min="0" max="100" value="50">
 
-            <h2 class="section-title">Proxy Settings</h2>
+            <h2 class="section-title">代理设置</h2>
             <div class="setting-toggle">
-                <label for="proxyEnabled">Enable Rotating Proxies</label>
+                <label for="proxyEnabled">启用轮换代理</label>
                 <label class="switch">
                     <input id="proxyEnabled" name="proxyEnabled" type="checkbox">
                     <span class="slider"></span>
                 </label>
             </div>
             <div id="proxyFormContainer" style="display: none;">
-                <p class="info-box" style="text-align: left;">Proxies are loaded from the <code>proxies.txt</code> file
-                    in your <code>/data</code> folder. Add one proxy per line in the format
-                    <code>protocol://user:pass@host:port</code>. You can get high quality proxies at <a
+                <p class="info-box" style="text-align: left;">代理是从你的 <code>/data</code> 文件夹中的 <code>proxies.txt</code> 文件加载的。每行添加一个代理, 格式为 <code>protocol://user:pass@host:port</code>。你可以在 <a
                         href="https://dataimpulse.com/?aff=199137" target="_blank"
-                        rel="noopener noreferrer">DataImpulse</a>.</p>
+                        rel="noopener noreferrer">DataImpulse</a> 中获得高质量的代理。
                 <div class="setting-toggle">
-                    <label for="logProxyUsage">Log Proxy Connections</label>
+                    <label for="logProxyUsage">代理连接日志</label>
                     <label class="switch">
                         <input id="logProxyUsage" name="logProxyUsage" type="checkbox">
                         <span class="slider"></span>
                     </label>
                 </div>
-                <label for="proxyRotationMode">Rotation Mode</label>
+                <label for="proxyRotationMode">循环模式</label>
                 <select id="proxyRotationMode">
-                    <option value="sequential">Sequential</option>
-                    <option value="random">Random</option>
+                    <option value="sequential">连续</option>
+                    <option value="random">随机</option>
                 </select>
                 <div id="proxyCount" class="info-box" style="text-align: center; margin-top: 10px;"></div>
-                <button type="button" id="reloadProxiesBtn" class="secondary-button">Reload Proxies from File</button>
+                <button type="button" id="reloadProxiesBtn" class="secondary-button">从文件中重新加载代理</button>
             </div>
 
             <button onclick="changeTab('main');" class="secondary-button"><img src="icons/return.svg"
-                    alt="">Return</button>
+                    alt="">返回</button>
         </div>
 
         <p class="credits">Made by <a href="https://github.com/luluwaffless">luluwaffless <img src="icons/github.svg"
                     alt="GitHub"></a> and <a href="https://github.com/JinxTheCatto">Jinx <img src="icons/github.svg"
                     alt="GitHub"></a>
         </p>
+        <p class="credits">中文翻译 By <a href="https://github.com/ChishFoxcat">Chish <img src="icons/github.svg" alt="GitHub"></a></p>
     </div>
 
     <div id="messageBoxOverlay" class="hidden">
@@ -277,8 +277,8 @@
             <h3 id="messageBoxTitle"></h3>
             <p id="messageBoxContent"></p>
             <div class="message-box-buttons">
-                <button id="messageBoxCancel" class="secondary-button">Cancel</button>
-                <button id="messageBoxConfirm" class="primary-button">OK</button>
+                <button id="messageBoxCancel" class="secondary-button">取消</button>
+                <button id="messageBoxConfirm" class="primary-button">确认</button>
             </div>
         </div>
     </div>
