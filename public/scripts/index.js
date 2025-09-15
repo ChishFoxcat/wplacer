@@ -433,7 +433,7 @@ userForm.addEventListener('submit', async (e) => {
     try {
         const response = await axios.post('/user', { cookies: { s: scookie.value, j: jValue } });
         if (response.status === 200) {
-            showMessage('Success', `Logged in as ${response.data.name} (#${response.data.id})!`);
+            showMessage('成功', `已登录为 ${response.data.name} (#${response.data.id})!`);
             userForm.reset();
             openManageUsers.click(); // Refresh the view
         }
@@ -835,8 +835,8 @@ canBuyCharges.addEventListener('change', () => {
 
 const resetTemplateForm = () => {
     templateForm.reset();
-    templateFormTitle.textContent = 'Add Template';
-    submitTemplate.innerHTML = '<img src="icons/addTemplate.svg">Add Template';
+    templateFormTitle.textContent = '添加 Template 图像';
+    submitTemplate.innerHTML = '<img src="icons/addTemplate.svg">添加 Template 图像';
     delete templateForm.dataset.editId;
     details.style.display = 'none';
     previewCanvas.style.display = 'none';
@@ -885,13 +885,13 @@ templateForm.addEventListener('submit', async (e) => {
             await axios.put(`/template/edit/${templateId}`, data);
             // Save the color ordering for this template
             colorOrderSaved = await saveColorOrder(templateId);
-            showMessage('Success', 'Template updated!');
+            showMessage('成功', 'Template 已更新!');
         } else {
             const response = await axios.post('/template', data);
             templateId = response.data.id;
             // Save the color ordering for this template
             colorOrderSaved = await saveColorOrder(templateId);
-            showMessage('Success', 'Template created!');
+            showMessage('成功', 'Template 已创建!');
         }
         
         resetTemplateForm();
@@ -909,7 +909,7 @@ startAll.addEventListener('click', async () => {
             handleError(error);
         }
     }
-    showMessage('Success', 'Finished! Check console for details.');
+    showMessage('成功', '完成！查看控制台以获取详细信息。');
     openManageTemplates.click();
 });
 
@@ -921,7 +921,7 @@ stopAll.addEventListener('click', async () => {
             handleError(error);
         }
     }
-    showMessage('Success', 'Finished! Check console for details.');
+    showMessage('成功', '完成！查看控制台以获取详细信息。');
     openManageTemplates.click();
 });
 
@@ -934,7 +934,7 @@ openManageUsers.addEventListener('click', () => {
     totalPPH.textContent = '?';
     loadUsers((users) => {
         const userCount = Object.keys(users).length;
-        manageUsersTitle.textContent = `Existing Users (${userCount})`;
+        manageUsersTitle.textContent = `现有用户 (${userCount})`;
         for (const id of Object.keys(users)) {
             const user = document.createElement('div');
             user.className = 'user';
@@ -951,18 +951,18 @@ openManageUsers.addEventListener('click', () => {
                     </div>
                 </div>
                 <div class="user-actions">
-                    <button class="delete-btn" title="Delete User"><img src="icons/remove.svg"></button>
-                    <button class="info-btn" title="Get User Info"><img src="icons/code.svg"></button>
+                    <button class="delete-btn" title="删除用户"><img src="icons/remove.svg"></button>
+                    <button class="info-btn" title="获取用户信息"><img src="icons/code.svg"></button>
                 </div>`;
 
             user.querySelector('.delete-btn').addEventListener('click', () => {
                 showConfirmation(
-                    'Delete User',
-                    `Are you sure you want to delete ${safeName} (#${id})? This will also remove them from all templates.`,
+                    '删除用户',
+                    `你确定要删除吗 ${safeName} (#${id})? 这也将把他们所有 Template 图像移除。`,
                     async () => {
                         try {
                             await axios.delete(`/user/${id}`);
-                            showMessage('Success', 'User deleted.');
+                            showMessage('成功', '用户已删除。');
                             openManageUsers.click();
                         } catch (error) {
                             handleError(error);
@@ -1091,7 +1091,7 @@ checkUserStatus.addEventListener('click', async () => {
     totalPPH.textContent = pph.toLocaleString();
 
     checkUserStatus.disabled = false;
-    checkUserStatus.innerHTML = '<img src="icons/check.svg">Check Account Status';
+    checkUserStatus.innerHTML = '<img src="icons/check.svg">检查账号状态';
 });
 
 openAddTemplate.addEventListener('click', () => {
@@ -1099,7 +1099,7 @@ openAddTemplate.addEventListener('click', () => {
     userSelectList.innerHTML = '';
     loadUsers((users) => {
         if (Object.keys(users).length === 0) {
-            userSelectList.innerHTML = '<span>No users added. Please add a user first.</span>';
+            userSelectList.innerHTML = '<span>没有用户, 请先添加用户</span>';
             return;
         }
         for (const id of Object.keys(users)) {
@@ -1310,10 +1310,10 @@ openManageTemplates.addEventListener('click', () => {
         topBar.className = 'template-actions-all';
         const importBtnTop = document.createElement('button');
         importBtnTop.className = 'secondary-button';
-        importBtnTop.innerHTML = '<img src="icons/addTemplate.svg">Import Share Code';
+        importBtnTop.innerHTML = '<img src="icons/addTemplate.svg">导入共享代码';
         importBtnTop.style.marginBottom = '10px';
         importBtnTop.addEventListener('click', async () => {
-            const code = prompt('Paste a share code:');
+            const code = prompt('粘贴共享代码:');
             if (!code) return;
             try {
                 const genId = Date.now().toString();
@@ -1323,7 +1323,7 @@ openManageTemplates.addEventListener('click', () => {
                     coords: [0, 0, 0, 0],
                     code,
                 });
-                showMessage('Success', 'Template imported successfully.');
+                showMessage('成功', 'Template imported successfully.');
                 openManageTemplates.click();
             } catch (e) {
                 handleError(e);
@@ -1336,7 +1336,7 @@ openManageTemplates.addEventListener('click', () => {
 
     loadTemplates((templates) => {
         if (Object.keys(templates).length === 0) {
-            templateList.innerHTML = '<span>No templates created yet.</span>';
+            templateList.innerHTML = '<span>尚未创建 Templates 图像</span>';
             return;
         }
         for (const id in templates) {
@@ -1379,7 +1379,7 @@ openSettings.addEventListener('click', async () => {
 const saveSetting = async (setting) => {
     try {
         await axios.put('/settings', setting);
-        showMessage('Success', 'Setting saved!');
+        showMessage('成功', 'Setting saved!');
     } catch (error) {
         handleError(error);
     }
@@ -1410,7 +1410,7 @@ reloadProxiesBtn.addEventListener('click', async () => {
         const response = await axios.post('/reload-proxies');
         if (response.data.success) {
             proxyCount.textContent = `${response.data.count} proxies reloaded from file.`;
-            showMessage('Success', 'Proxies reloaded successfully!');
+            showMessage('成功', 'Proxies reloaded successfully!');
         }
     } catch (error) {
         handleError(error);
