@@ -11,6 +11,7 @@
 - 主要是翻译主页以及其他功能的文字内容，不包括修 bug 和提供技术帮助。
 - 此 md 文件是更改原仓库中文 READM_zh-cn.md 而来，仅作此仓库的部分介绍。
 - 不保证与源仓库 100% 的更新进度，还请使用源仓库进行更新。
+- 不保证 100% 的中文兼容性，如果出现兼容性问题，请提交 issue 查验其问题。如是中文问题，请使用源仓库的软件。
 
 ## 主要功能 ✅
 
@@ -48,6 +49,41 @@
    - 您可将多个用户分配到同一个模板。
 5. 最后，转到“管理模板”并点击任何模板上的“开始”按钮以开始绘制。
    - 脚本会不时刷新 wplace.live（https://wplace.live/）上的一个活跃机器人窗口。这是为了刷新绘制所需的 Turnstile 令牌。
+
+# 常见问题和常见错误 🤔
+### 浏览器:
+ -  **最佳支持的浏览器是 Brave，你可以在此处获取：<https://brave.com/download/>**
+ -  Chrome 可以工作，但不推荐使用 (zero fingerprint protection - high ban chance)
+ - 不支持 Firefox
+
+### 如何获得 JWT Token:
+打开 [wplace.live](<https://wplace.live>)，登录，单击地图上的任意位置，然后按 `Ctrl` + `Shift` + `i`，转到应用程序 ，找到 `j` 列，然后复制其中的值
+
+### 如何安装扩展:
+转到“管理扩展”选项卡，启用“开发人员模式”，然后单击“加载解压”，选择 `LOAD_UNPACKED` 文件夹。之后，确保单击 wplace.live 中的扩展名，并在 `.env` 中更改端口时配置您的端口
+
+### 如何运行bot:
+1. 只需打开 `start.bat`。
+2. 在 wplacer 文件夹中打开命令提示符。您可以在文件资源管理器的地址栏中键入 `cmd` 来执行此作。在命令提示符下运行 `npm i`，然后在运行 `npm start` 之后运行。
+   - 如果您在运行 `npm i` 时遇到任何错误，请运行: `Set-ExecutionPolicy -Scope CurrentUser Bypass` 然后您可以运行 `npm i`
+
+### 如何添加代理:
+您需要找到自己的代理提供商，一旦找到，您必须遵循以下格式：`protocol://ip:port` 或 `protocol://user:pass:ip:port`
+
+示例：`socks5：//127.0.0.1：9050`
+示例: `socks5://user:admin:127.0.0.1:9050`
+
+### 为什么它会停留在等待 token 上？
+必须至少打开 [wplace](<https://wplace.live>) 。你需要一个宏或其他可以自动单击旋转门复选框的东西。
+
+### 我不断出现 error 500:
+有两件事会导致这种情况，[wplace.live](<https://wplace.live>) 关闭，或者您的 token 已过期。
+ - 要检查 wplace 是否已关闭，请转到此处：<https://status.wplace.lol/>
+ - 如果已启动，请执行第一步重新添加令牌。
+ - 如果两者都不是问题，那么代码中的某些内容可能是错误的。在支持服务器中打开问题或告诉他们，应该在未来的更新中修复。
+
+### ERR_MODULE_NOT_FOUND:
+你的一个模块丢失了。要安装它们，只需使用 `npm i`
 
 ## 免责声明 📝
 
